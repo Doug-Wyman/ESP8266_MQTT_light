@@ -1,0 +1,17 @@
+{
+  "ssid": "mosquitto.net",
+  "password": "mypassword",
+  "address": [ "192.168.0.222", "255.255.255.0", "192.168.0.1", "192.168.0.1" ],
+  "broker": "192.168.0.109",
+  "hostname": "light/test",
+  "clientid": "light/test",
+  "topic": "/light/test/",
+  "freq": 10000,
+  "switch": 16,
+  "red": 15,
+  "green": 13,
+  "blue": 12,
+  "white": 14
+  "ctrl_white": 5
+  "ctrl_mood": 4
+}
