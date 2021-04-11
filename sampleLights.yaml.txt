@@ -1,0 +1,24 @@
+sample configuration in lights.yaml for home assistant
+  - platform: mqtt
+    schema: json
+    name: "kitchen_north_white"
+    unique_id: "kitchen_north_white"
+    state_topic: "/light/kitchen/north/white/state"
+    command_topic: "/light/kitchen/north/white/switch"
+    brightness_scale: 1024
+    brightness: true
+    qos: 0
+    optimistic: false
+    
+  - platform: mqtt
+    schema: json
+    name: "kitchen_north_mood"
+    unique_id: "kitchen_north_mood"
+    state_topic: "/light/kitchen/north/rgb/state"
+    command_topic: "/light/kitchen/north/rgb/switch"
+    brightness: true
+    brightness_scale: 1024
+    rgb: true
+    qos: 0
+    optimistic: false
+ 
