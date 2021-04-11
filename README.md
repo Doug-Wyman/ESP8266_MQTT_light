@@ -12,5 +12,7 @@ So I eliminated all comments and extras.  If I get a burr in my britches, I'll u
 
 I welcome suggestions and corrections.  The entire project is for a Home-Assistant installation and I have 4 sets of lights working.
 I was experiencing disconnect fails when the HASS server or the Mosquitto server was rebooted so I wrote the code so it reboots the ESP8266
-on fail which it does from time to time in normal use.  
+on fail which it does from time to time in normal use.
+
+I have included a sample configuration for Home Assistant control of the module
 
