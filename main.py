@@ -228,12 +228,12 @@ while 1:
         ctrlm_down += 1
         if ctrlm_down > down_time:
           BRIGHTMULTIPLIER = float(ctrlm_level / 1024)
-          red = (int(float(status['rgb']['color']['r']) * BRIGHTMULTIPLIER))
-          green = (int(float(status['rgb']['color']['g']) * BRIGHTMULTIPLIER))
-          blue = (int(float(status['rgb']['color']['b']) * BRIGHTMULTIPLIER))
-          RED_PIN.duty(red)
-          GREEN_PIN.duty(green)
-          BLUE_PIN.duty(blue)
+          red = float(int(status['rgb']['color']['r']) * BRIGHTMULTIPLIER)
+          green = float(int(status['rgb']['color']['g']) * BRIGHTMULTIPLIER)
+          blue = float(int(status['rgb']['color']['b']) * BRIGHTMULTIPLIER)
+          RED_PIN.duty(int(red))
+          GREEN_PIN.duty(int(green))
+          BLUE_PIN.duty(int(blue))
           if ctrlm_level < 1:
             ctrlm_raise = True
           if ctrlm_raise == True:
@@ -246,6 +246,7 @@ while 1:
             ctrlm_level -= 1
             if ctrlm_level < 1:
               ctrlm_raise = True
+          print(str(ctrlm_level) + "--" + str(int(red)))
         sleep(.01)
       if ctrlm_down > down_time:
         ctrlm_short = 0
