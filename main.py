@@ -47,12 +47,18 @@ def received(topic, inmsg):
       status['rgb']['color'] = newset.get('color', status['rgb']['color'])
       if status['rgb']['state'] == 'ON':
         BRIGHTMULTIPLIER = float(status['rgb']['brightness'] / 1024)
-        red = (int(float(status['rgb']['color']['r']) * BRIGHTMULTIPLIER))
-        green = (int(float(status['rgb']['color']['g']) * BRIGHTMULTIPLIER))
-        blue = (int(float(status['rgb']['color']['b']) * BRIGHTMULTIPLIER))
-        RED_PIN.duty(red)
-        GREEN_PIN.duty(green)
-        BLUE_PIN.duty(blue)
+        red = int(float(status['rgb']['color']['r'] /255) *1024)
+        red = int(red * BRIGHTMULTIPLIER )
+        green = int(float(status['rgb']['color']['g'] /255) * 1024)
+        green = int(green * BRIGHTMULTIPLIER)
+        blue = int(float(status['rgb']['color']['b'] /255) * 1025)
+        blue = int(blue *  BRIGHTMULTIPLIER)
+        print("red is:" + str(red))
+        print("green is:" + str(green))
+        print("blue is:" + str(blue))
+        RED_PIN.duty(int(red))
+        GREEN_PIN.duty(int(green))
+        BLUE_PIN.duty(int(blue))
       else:
         RED_PIN.duty(0)
         GREEN_PIN.duty(0)
@@ -61,7 +67,7 @@ def received(topic, inmsg):
       savestate()
     BUSY = False
   else:
-    print('.',end='')
+    print('.', end='')
 
 def connect_and_subscribe():
   global CLIENT_ID, BROKER_ADDRESS, ROOT_TOPIC, client, SWITCH_PIN
@@ -125,7 +131,7 @@ while 1:
         client = connect_and_subscribe()
 #######################start white contro
     if CTRL_WHITE.value() == 0:
-      print(".", end='')
+      #print(".", end='')
       if ctrlw_short > 0:
         print("XX", end='')
         ctrlw_short += 1
@@ -187,7 +193,7 @@ while 1:
       print("after short1" + str(ctrlw_short))
 #######################logic#################################
     if CTRL_MOOD.value() == 0:
-      print(".", end='')
+      #print(".", end='')
       if ctrlm_short > 0:
         print("XX", end='')
         ctrlm_short += 1
@@ -199,12 +205,18 @@ while 1:
             #WHITE_PIN.duty(status['rgb']['brightness'])
             status['rgb']['state'] = 'ON'
             BRIGHTMULTIPLIER = float(status['rgb']['brightness'] / 1024)
-            red = (int(float(status['rgb']['color']['r']) * BRIGHTMULTIPLIER))
-            green = (int(float(status['rgb']['color']['g']) * BRIGHTMULTIPLIER))
-            blue = (int(float(status['rgb']['color']['b']) * BRIGHTMULTIPLIER))
-            RED_PIN.duty(red)
-            GREEN_PIN.duty(green)
-            BLUE_PIN.duty(blue)
+            red = int(float(status['rgb']['color']['r'] /255) *1024)
+            red = int(red * BRIGHTMULTIPLIER )
+            green = int(float(status['rgb']['color']['g'] /255) * 1024)
+            green = int(green * BRIGHTMULTIPLIER)
+            blue = int(float(status['rgb']['color']['b'] /255) * 1025)
+            blue = int(blue *  BRIGHTMULTIPLIER)
+            print("red is:" + str(red))
+            print("green is:" + str(green))
+            print("blue is:" + str(blue))
+            RED_PIN.duty(int(red))
+            GREEN_PIN.duty(int(green))
+            BLUE_PIN.duty(int(blue))
           else:
             RED_PIN.duty(0)
             GREEN_PIN.duty(0)
@@ -223,17 +235,24 @@ while 1:
       while CTRL_MOOD.value() == 1:
         ctrlm_down += 1
         if ctrlm_down > down_time:
-          BRIGHTMULTIPLIER = float(ctrlm_level / 1024)
-          red = float(int(status['rgb']['color']['r']) * BRIGHTMULTIPLIER)
-          green = float(int(status['rgb']['color']['g']) * BRIGHTMULTIPLIER)
-          blue = float(int(status['rgb']['color']['b']) * BRIGHTMULTIPLIER)
+          status['rgb']['brightness'] = ctrlm_level
+          BRIGHTMULTIPLIER = float(status['rgb']['brightness'] / 1024)
+          red = int(float(status['rgb']['color']['r'] /255) *1024)
+          red = int(red * BRIGHTMULTIPLIER )
+          green = int(float(status['rgb']['color']['g'] /255) * 1024)
+          green = int(green * BRIGHTMULTIPLIER)
+          blue = int(float(status['rgb']['color']['b'] /255) * 1025)
+          blue = int(blue *  BRIGHTMULTIPLIER)
+          print("red is:" + str(red))
+          print("green is:" + str(green))
+          print("blue is:" + str(blue))
           RED_PIN.duty(int(red))
           GREEN_PIN.duty(int(green))
           BLUE_PIN.duty(int(blue))
           if ctrlm_level < 1:
             ctrlm_raise = True
           if ctrlm_raise == True:
-            ctrlm_level = int(ctrlm_level) + 1
+            ctrlm_level += 1
             if int(ctrlm_level) > 1024:
               ctrlm_raise = False
             else:
