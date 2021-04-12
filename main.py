@@ -2,6 +2,7 @@
 from machine import RTC
 import time
 from time import sleep
+import socket
 import os
 import ujson
 from umqttsimple import MQTTClient
@@ -24,6 +25,7 @@ def received(topic, inmsg):
     ##############WHITE######################
     if topic == ROOT_TOPIC + b'white/switch':
       print('ESP received switch')
+      
       newset = ujson.loads(msg)
       print(newset)
       status['white']['state'] = newset.get('state', status['white']['state'])
@@ -280,7 +282,6 @@ while 1:
         try:
             client.publish(ROOT_TOPIC + b'white/state', str(ujson.dumps(status['white'])))
             client.publish(ROOT_TOPIC + b'rgb/state', str(ujson.dumps(status['rgb'])))
-            client.publish(ROOT_TOPIC + b'datetime', str(time.localtime()))
             last_message = time.time()
         except:
             print("error sending")
