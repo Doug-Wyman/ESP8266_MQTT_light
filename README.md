@@ -3,7 +3,7 @@ Micropython code for controlling an RGB and White light using an ESP8266 control
 
 This code is poorly written alpha code to control a 12 VDC RGB light and a 12 VDC white light over MQTT 
 It works but needs improvement. The switches control on/off with a short press and dimming/brightening when
-they are held sown.  The RGB dimming needs some math rewrite.  
+they are held sown.  The RGB dimming is undergoing improvement.  
 
 OSH Park is making my controller board (click on it) <a href="https://oshpark.com/shared_projects/SDt1Jgl8"><img src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/5d04d3145cb8d8d68e20611b7c08b1a4.png" alt="OSH Park"></img></a>.  
 
