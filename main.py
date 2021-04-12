@@ -2,7 +2,6 @@
 from machine import RTC
 import time
 from time import sleep
-import socket
 import os
 import ujson
 from umqttsimple import MQTTClient
