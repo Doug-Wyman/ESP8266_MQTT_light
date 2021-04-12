@@ -1,12 +1,8 @@
-import machine
+#import machine
 from machine import RTC
 import time
 from time import sleep
-import math
-import socket
-import network
 import os
-import utime
 import ujson
 from umqttsimple import MQTTClient
 ################# main for light ########################

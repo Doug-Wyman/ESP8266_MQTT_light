@@ -1,21 +1,15 @@
 ### boot for light ###
-import time
-import os
-import ubinascii
+import gc
 import machine
 from machine import Pin, PWM
-import micropython
 import network
-import socket
 import esp
 import ujson
-from umqttsimple import MQTTClient
 import webrepl
 
 webrepl.start()
 esp.osdebug(None)
 
-import gc
 gc.collect()
 
 paramsfile = open('params', 'r')
@@ -43,8 +37,8 @@ RED_PIN.duty(0)
 GREEN_PIN.duty(0)
 BLUE_PIN.duty(0)
 WHITE_PIN.duty(0)
-CTRL_WHITE = machine.Pin(set_params['ctrl_white'], machine.Pin.IN) 
-CTRL_MOOD = machine.Pin(set_params['ctrl_mood'], machine.Pin.IN) 
+CTRL_WHITE = machine.Pin(set_params['ctrl_white'], machine.Pin.IN)
+CTRL_MOOD = machine.Pin(set_params['ctrl_mood'], machine.Pin.IN)
 
 NTP_DELTA = 3155698800
 ntphost = "pool.ntp.org"
@@ -83,7 +77,7 @@ except OSError as exc:
       }
 SWITCH_PIN.value(0)
 ### boot for light ###
-if status['rgb']['state']=='ON':
+if status['rgb']['state'] == 'ON':
     BRIGHTMULTIPLIER = float(status['rgb']['brightness'] / 1024)
     red = (int(float(status['rgb']['color']['r']) * BRIGHTMULTIPLIER))
     green = (int(float(status['rgb']['color']['g']) * BRIGHTMULTIPLIER))
@@ -95,7 +89,7 @@ else:
     RED_PIN.duty(0)
     GREEN_PIN.duty(0)
     BLUE_PIN.duty(0)
-if status['white']['state']=='ON':
+if status['white']['state'] == 'ON':
     WHITE_PIN.duty(status['white']['brightness'])
 else:
     WHITE_PIN.duty(0)
@@ -116,5 +110,4 @@ while STATION.isconnected() == False:
 print('Connection successful')
 print(STATION.ifconfig())
 ### boot for light ###
-
 
