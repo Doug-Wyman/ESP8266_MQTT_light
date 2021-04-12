@@ -14,5 +14,6 @@ I welcome suggestions and corrections.  The entire project is for a Home-Assista
 I was experiencing disconnect fails when the HASS server or the Mosquitto server was rebooted so I wrote the code so it reboots the ESP8266
 on fail which it does from time to time in normal use.
 
-I have included a sample configuration for Home Assistant control of the module
+I have included a sample configuration for Home Assistant control of the module.  The MQTT code will return the version 
+which should be available as a sensor to Home Assistant though I have not used it outside my debug environment yet.
 
