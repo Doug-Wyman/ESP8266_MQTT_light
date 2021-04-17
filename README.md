@@ -22,8 +22,13 @@ which will fill the sensor value.
 The Code:
 boot.py starts by loading the webrepl which probably won't be needed in production.
 The parameters file is loaded and contains data for the WiFi connection, the MQTT instance, the pin data for the ESP8266 and such.
-The status file is essentially the JSON state last saved so the light on boot is set to the last known state.
+The status file is essentially the JSON state last saved so the light on boot is set to the last known state.  The WiFi connection
 
-For now this is it, more later........... Doug
+Boot then calls main.  Main starts by opening the MQTT connection.
+If there is an error in connecting, the program flashes the LED on the ESP8266 three times and exits.  
+On a good MQTT connection , the routine sets a callback address for received messages 
+and returns the connected client.
+
+
 
 
