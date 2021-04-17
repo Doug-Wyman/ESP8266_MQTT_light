@@ -22,3 +22,9 @@ sample configuration in lights.yaml for home assistant
     qos: 0
     optimistic: false
  
+sensor kitchen_north_version:
+  - platform: mqtt
+    name: "kitchen_north_version"
+    unique_id: "kitchen_north_version"
+    state_topic: "/light/kitchen/north/version"
+
