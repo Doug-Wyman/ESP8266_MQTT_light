@@ -22,9 +22,13 @@ sample configuration in lights.yaml for home assistant
     qos: 0
     optimistic: false
  
-sensor kitchen_north_version:
-  - platform: mqtt
-    name: "kitchen_north_version"
-    unique_id: "kitchen_north_version"
-    state_topic: "/light/kitchen/north/version"
+##############below is a script to retrieve the firmware version ###########
 
+get_kitchen_north_version:
+  alias: Get_kitchen_north_Version
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: /light/kitchen_north/version?
+      payload: x
+  mode: single
