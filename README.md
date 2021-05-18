@@ -9,7 +9,7 @@ The switches control on/off with a short press and dimming/brightening
 when they are held down.  
 
 OSH Park is making my controller board (click on image)
-<a href="https://oshpark.com/shared_projects/tXnsDzBn">
+<a href="https://oshpark.com/shared_projects/0PHXbjkM">
 <img src="https://644db4de3505c40a0444-327723bce298e3ff5813fb42baeefbaa.ssl.cf1.rackcdn.com/5d04d3145cb8d8d68e20611b7c08b1a4.png" alt="OSH Park"></img></a>.  
 The design is an Eagle cad design but there is a caveat!!
 The switches come with 4 pins two pair of bussed through hole.
