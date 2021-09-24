@@ -38,7 +38,7 @@ def received(topic, inmsg):
     ########################rgb#######################
     if topic == ROOT_TOPIC + b'version?':
       print('ESP version request')
-      client.publish(ROOT_TOPIC + b'version', 'Version 2021.001')
+      client.publish(ROOT_TOPIC + b'version', 'Version 2021.091')
     if topic == ROOT_TOPIC + b'rgb/switch':
       print('RGB received switch')
       newset = ujson.loads(msg)
@@ -82,6 +82,7 @@ def connect_and_subscribe():
     client.subscribe(ROOT_TOPIC + b'#')
     print('Connected to %s MQTT broker, subscribed to %s topic' % (BROKER_ADDRESS, ROOT_TOPIC))
     SWITCH_PIN.value(1)
+    client.publish(ROOT_TOPIC + b'version', 'Version 2021.091')
     return client
   except:
     SWITCH_PIN.value(1)
